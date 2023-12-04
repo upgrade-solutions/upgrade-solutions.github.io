@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Menu from '../components/Menu.astro';
+import Hero from '../components/Hero.astro';
+import Why from '../components/Why.astro';
+import How from '../components/How.astro';
+import What from '../components/What.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/styles.css';
+---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<Layout title="Upgrade Solutions">
+	<Menu></Menu>
+	<Hero></Hero>
+	
+	<div id="main" class="ui container">
+		<div class="ui hidden divider"></div>
+		<div class="ui hidden divider"></div>
+		<Why></Why>
+		<div class="ui divider"></div>
+		<How></How>
+		<div class="ui divider"></div>
+		<What></What>
+		<div class="ui divider"></div>
+		<Contact></Contact>
+		<div class="ui hidden divider"></div>
+		<div class="ui hidden divider"></div>
+		<div class="ui divider"></div>
+		<Footer></Footer>
+</Layout>
+
+<script>
+	import "../scripts/scripts.js";
+</script>
