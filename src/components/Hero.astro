@@ -4,20 +4,20 @@ import mastheadImage from "../images/upgrade_masthead.png";
 import mastheadBackground from "../images/masthead_bg.gif";
 const optimizedBackgroundImage = await getImage({ src: mastheadBackground })
 ---
-<div id="hero" class="ui inverted vertical masthead center aligned segment" style={`background-image: url('${optimizedBackgroundImage.src}')`}>
+<div id="hero_background" style={`background-image: url('${optimizedBackgroundImage.src}')`}></div>
+<div id="hero" class="ui vertical masthead center aligned segment">
   <div id="hero_grid" class="ui stackable grid">
-    <div class="six wide column">
+    <div id="masthead" class="eight wide column">
+      <Image src={mastheadImage} alt="masthead" class="ui fluid image" />
+    </div>
+    <div id="cta" class="six wide column">
       <div class="ui vertical masthead center aligned segment">
         <div class="ui container">
-          <h1 class="ui inverted header">Upgrading<br/>Software Systems</h1>
-          <h4 class="ui inverted header">Tools for modernizing legacy apps<br/>and generating new ones</h4>
+          <h1 class="ui inverted header">Expert Software.<br/>No Headaches.</h1>
           <br/>
           <a id="contact-link" class="ui big inverted button" data-turbo="false" href="/#contact_section">Contact</a>
         </div>
       </div>
-    </div>
-    <div id="masthead" class="nine wide column">
-      <Image src={mastheadImage} alt="masthead" class="ui fluid image" />
     </div>
   </div>
 </div>

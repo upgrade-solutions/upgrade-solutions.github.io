@@ -1,15 +1,24 @@
 ---
-import FlowDivider from "./FlowDivider.astro";
+import { Image } from "astro:assets";
+import timImage from "../images/tim.jpg";
 ---
 
 <div id="contact" class="ui center aligned inverted segment">
   <h1>Contact</h1>
   <p>
-    Reach out to learn more about our products and services. <br />
+    Our team is led by Tim Kleier, an architect and engineer with over a decade of experience.<br />
   </p>
-  <FlowDivider />
+  <Image src={timImage} alt="tim" class="ui centered small circular image" />
   <div class="ui hidden divider"></div>
-  <a href="mailto:tim@upgradesolutions.io" class="ui primary button">
-    Email Us
-  </a>  
+  <i class="huge icons">
+    <a href="mailto:tim@upgradesolutions.io" target="_blank">
+      <i class="mail inverted tiny link icon"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/timkleier/" target="_blank">
+      <i class="linkedin inverted tiny link icon"></i>
+    </a>
+    <a href="https://twitter.com/timkleier" target="_blank">
+      <i class="twitter inverted tiny link icon"></i>
+    </a>
+  </i>
 </div>

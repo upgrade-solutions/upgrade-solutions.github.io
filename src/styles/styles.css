@@ -59,16 +59,43 @@ h1, h2, h3, h4, h5, h6, .breadcrumb div.divider, .ui.form label {
   text-align: left;
 }
 
-#hero {
-  height: 430px; 
+#hero_background {
+  height: 300px;
+  width: 100%;
   background-size: cover;
+  position: absolute;
 }
 
-#hero_grid { margin-top: 60px; }
+#hero {
+  height: 300px;
+  top: 50px;
+}
+
+#hero_grid img, h1, a {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#masthead img {
+  width: 80%;
+}
 
 #showcase {
   min-height: 350px;
   .six.wide.column { margin: auto 0; max-height: 350px }
+}
+
+#why .ui.list {
+  margin: 0 auto;
+  max-width: 150px;
+}
+
+#why .ui.list .item {
+  font-size: 1.2em;
+  text-align: left;
+}
+#why .ui.list .item::before {
+  color: white !important;
 }
 
 #publish .images img { max-width: 450px; }
@@ -76,11 +103,6 @@ h1, h2, h3, h4, h5, h6, .breadcrumb div.divider, .ui.form label {
 #products {
   margin-bottom: 0px;
   padding-bottom: 0px;
-}
-
-#what_is_dna { 
-  max-width: 500px;
-  margin: 0 auto;
 }
 
 #contact {
@@ -113,13 +135,19 @@ h1, h2, h3, h4, h5, h6, .breadcrumb div.divider, .ui.form label {
 }
 
 @media (max-width: 402px) {
-  #hero {
-    a { width: 100% !important; }
-    svg { display: none !important; }
+  #hero_background {
+    height: 170px;
   }
-  #hero_grid { margin-top: 30px; }
-  #dna-image { display: block !important; margin-left: -80px; width: 150% !important; }
-
+  #hero {
+    top: 40px;
+    height: 370px;
+  }
+  #hero a { width: 100% !important; font-size: 1.2em !important; }
+  #hero h1 { font-size: 1.7em !important; }
+  #cta {
+    top: 20px;
+    background-color: rgba(33, 133, 208, 0.7);
+  }
   .editor { 
     max-height: 250px;
   }
