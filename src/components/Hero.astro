@@ -1,4 +1,10 @@
-<div id="hero" class="ui inverted vertical masthead center aligned segment" style="background-image: url(public/masthead_bg.gif);">
+---
+import { Image, getImage } from "astro:assets";
+import mastheadImage from "../images/upgrade_masthead.png";
+import mastheadBackground from "../images/masthead_bg.gif";
+const optimizedBackgroundImage = await getImage({ src: mastheadBackground })
+---
+<div id="hero" class="ui inverted vertical masthead center aligned segment" style={`background-image: url('${optimizedBackgroundImage.src}')`}>
   <div id="hero_grid" class="ui stackable grid">
     <div class="six wide column">
       <div class="ui vertical masthead center aligned segment">
@@ -11,7 +17,7 @@
       </div>
     </div>
     <div id="masthead" class="nine wide column">
-      <img class="ui fluid image" src="public/upgrade_masthead.png" />
+      <Image src={mastheadImage} alt="masthead" class="ui fluid image" />
     </div>
   </div>
 </div>
