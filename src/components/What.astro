@@ -1,5 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import FlowDivider from "./FlowDivider.astro";
+import publishImage from "./public/publish.gif";
+import translatorImage from "./public/translator.png";
 ---
 
 <div id="what" class="ui center aligned inverted segment">
@@ -35,11 +38,7 @@ import FlowDivider from "./FlowDivider.astro";
               </div>
             </div>
             <div class="ten wide column">
-              <img
-                class="ui fluid image"
-                id="compose-image"
-                src="public/translator.png"
-              />
+              <Image src={translatorImage} alt="Publish" class="ui fluid image" id="compose-image" />
             </div>
           </div>
         </div>
@@ -61,11 +60,7 @@ import FlowDivider from "./FlowDivider.astro";
               </div>
             </div>
             <div class="ten wide column">
-              <img
-                class="ui fluid image"
-                id="compose-image"
-                src="public/publish.gif"
-              />
+              <Image src={publishImage} alt="Publish" class="ui fluid image" id="compose-image" />
             </div>
           </div>
         </div>
