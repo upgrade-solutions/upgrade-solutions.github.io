@@ -134,22 +134,28 @@ h1, h2, h3, h4, h5, h6, .breadcrumb div.divider, .ui.form label {
   text-decoration: line-through;
 }
 
-@media (max-width: 402px) {
+@media (max-width: 767px) {
   #hero_background {
-    height: 170px;
+    height: 270px;
   }
   #hero {
     top: 40px;
-    height: 370px;
+    height: 400px;
   }
   #hero a { width: 100% !important; font-size: 1.2em !important; }
   #hero h1 { font-size: 1.7em !important; }
   #cta {
     top: 20px;
-    background-color: rgba(33, 133, 208, 0.7);
+    background-color: rgba(33, 133, 190, 1);
   }
-  .editor { 
-    max-height: 250px;
+}
+
+@media (max-width: 402px) {
+  #hero_background {
+    height: 170px;
+  }
+  #hero {
+    height: 370px;
   }
   .flow_divider {
     display: none !important;
