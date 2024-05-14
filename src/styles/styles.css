@@ -130,6 +130,10 @@ h1, h2, h3, h4, h5, h6, .breadcrumb div.divider, .ui.form label {
   opacity: 0.8;
 }
 
+.footer a {
+  color: #fff;
+}
+
 .strikethrough {
   text-decoration: line-through;
 }
