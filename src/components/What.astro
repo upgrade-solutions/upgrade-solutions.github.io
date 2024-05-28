@@ -3,6 +3,9 @@ import { Image } from "astro:assets";
 import FlowDivider from "./FlowDivider.astro";
 import publishImage from "../images/publish.gif";
 import translatorImage from "../images/translator.png";
+import flagshipImage from "../images/flagship.png";
+import flagshipImageWhite from "../images/flagship_white.png";
+import flagshipDemo from "../images/flagship_demo.png";
 ---
 
 <div id="what" class="ui center aligned inverted segment">
@@ -10,12 +13,37 @@ import translatorImage from "../images/translator.png";
     <h1 class="ui header">Products</h1>
     <div id="products" class="ui center aligned inverted segment">
       <div class="ui huge inverted compact tabular secondary menu">
-        <a class="active item" id="translator-tab" data-tab="translator"
-          >Code Translator</a
-        >
+        <a class="active item" id="flagship-tab" data-tab="flagship">FlagShip</a >
+        <a class="item" id="translator-tab" data-tab="translator">Code Translator</a >
         <a class="item" id="builder-tab" data-tab="builder">DNA Builder</a>
       </div>
-      <div class="ui active inverted tab segment" data-tab="translator">
+      <div class="ui active inverted tab segment" data-tab="flagship">
+        <div class="ui inverted vertical masthead center aligned segment">
+          <div class="ui stackable grid">
+            <div class="six wide column product_description">
+              <div class="ui inverted vertical masthead center aligned segment">
+                <div class="ui container">
+                  <i class="circular big grey inverted icon">
+                    <Image src={flagshipImageWhite} alt="FlagShip" class="ui fluid image" id="flagship-image-white" style="width: 35px; margin: -3px 10px 0 10px;" />
+                    <Image src={flagshipImage} alt="FlagShip" class="ui fluid image" id="flagship-image" style="display: none;" />
+                  </i>
+                  <h2>FlagShip</h2>
+                  <p>Manage your feature flags<br />directly within Jira</p>
+                  <a
+                    class="ui inverted button"
+                    data-turbo="false"
+                    href="https://app.dna.codes/translator" target="_blank">View Plugin</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="ten wide column">
+              <Image src={flagshipDemo} alt="FlagShip Demo" class="ui fluid image" id="flagship-demo-image" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui inverted tab segment" data-tab="translator">
         <div class="ui inverted vertical masthead center aligned segment">
           <div class="ui stackable grid">
             <div class="six wide column product_description">
