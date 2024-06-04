@@ -138,6 +138,14 @@ h1, h2, h3, h4, h5, h6, .breadcrumb div.divider, .ui.form label {
   text-decoration: line-through;
 }
 
+.grey-border {
+  border: 1px solid #555;
+}
+
+.box-shadow {
+  box-shadow: 1px 1px 20px black;
+}
+
 @media (max-width: 767px) {
   #hero_background {
     height: 270px;
