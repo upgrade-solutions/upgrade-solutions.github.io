@@ -3,7 +3,12 @@ import { Image } from "astro:assets";
 import Layout from '../layouts/Layout.astro';
 import '../styles/styles.css';
 import flagshipImage from "../images/flagship.png";
-import flagshipSettings from "../images/flagship_settings.png";
+import flagshipSettingsLD from "../images/flagship_settings_launchdarkly.png";
+import launchDarklyAccessToken from "../images/launchdarkly_access_token.png";
+import launchDarklyProject from "../images/launchdarkly_project.png";
+import flagshipSettingsSplit from "../images/flagship_settings_split.png";
+import splitAPIKey from "../images/split_apikey.png";
+import splitWorkspaceID from "../images/split_workspace.png";
 import flagshipLink from "../images/flagship_link.png";
 import flagshipToggle from "../images/flagship_toggle.png";
 ---
@@ -17,35 +22,95 @@ import flagshipToggle from "../images/flagship_toggle.png";
         </h1>
         <p>Manage your feature flags in Jira issues</p>
       </div>
-      <div class="ui horizontal divider">
-        <i class="inverted angle double down icon"></i>
-      </div>
-      <h2 class="ui small inverted center aligned icon header">
-        <i class="settings icon"></i>
-        Configure Settings
-      </h2>
-      <p>Go to Jira Settings > Apps > FlagShip Config</p>
-      <Image src={flagshipSettings} alt="FlagShip Settings" class="ui centered big image grey-border box-shadow" />
 
-      <div class="ui horizontal divider">
-        <i class="inverted angle double down icon"></i>
+      <div class="ui huge inverted compact tabular secondary menu">
+        <a class="active item" id="launchdarkly-tab" data-tab="launchdarkly">LaunchDarkly</a >
+        <a class="item" id="split-tab" data-tab="split">Split</a >
       </div>
-      <h2 class="ui small inverted center aligned icon header">
-        <i class="flag icon"></i>
-        Link a Flag
-      </h2>
-      <p>In the Jira issue sidebar, under FlagShip</p>
-      <Image src={flagshipLink} alt="FlagShip Link" class="ui centered big image grey-border box-shadow" />
+      <div class="ui active inverted tab segment" data-tab="launchdarkly">
+        <div class="ui inverted vertical masthead center aligned segment">
+          <h2 class="ui small inverted center aligned icon header">
+            <i class="settings icon"></i>
+            Configure Settings
+          </h2>
+          <div class="ui two column grid">
+            <div class="column">
+              <p>Go to Jira Settings > Apps > FlagShip Config</p>
+              <Image src={flagshipSettingsLD} alt="FlagShip Settings" class="ui centered big image grey-border box-shadow" />
+            </div>
+            <div class="column">
+              <p>LaunchDarkly Access Token</p>
+              <Image src={launchDarklyAccessToken} alt="LaunchDarkly Access Token" class="ui centered big image grey-border box-shadow" />
+              <br />
+              <p>LaunchDarkly Project ID</p>
+              <Image src={launchDarklyProject} alt="LaunchDarkly Project" class="ui centered big image grey-border box-shadow" />
+            </div>
+          </div>
+          
+          <div class="ui horizontal divider">
+            <i class="inverted angle double down icon"></i>
+          </div>
+          <h2 class="ui small inverted center aligned icon header">
+            <i class="flag icon"></i>
+            Link a Flag
+          </h2>
+          <p>In the Jira issue sidebar, under FlagShip</p>
+          <Image src={flagshipLink} alt="FlagShip Link" class="ui centered big image grey-border box-shadow" />
+    
+          <div class="ui horizontal divider">
+            <i class="inverted angle double down icon"></i>
+          </div>
+          <h2 class="ui small inverted center aligned icon header">
+            <i class="toggle on icon"></i>
+            Toggle Flags
+          </h2>
+          <p>Turn features on or off</p>
+          <Image src={flagshipToggle} alt="FlagShip Toggle" class="ui centered big image grey-border box-shadow" />
+        </div>
+      </div>
+      <div class="ui inverted tab segment" data-tab="split">
+        <div class="ui inverted vertical masthead center aligned segment">
+          <h2 class="ui small inverted center aligned icon header">
+            <i class="settings icon"></i>
+            Configure Settings
+          </h2>
+          <div class="ui two column grid">
+            <div class="column">
+              <p>Go to Jira Settings > Apps > FlagShip Config</p>
+              <Image src={flagshipSettingsSplit} alt="FlagShip Settings" class="ui centered big image grey-border box-shadow" />
+            </div>
+            <div class="column">
+              <p>Split Admin API Key</p>
+              <Image src={splitAPIKey} alt="LaunchDarkly Access Token" class="ui centered big image grey-border box-shadow" />
+              <br />
+              <p>Split Workspace ID</p>
+              <Image src={splitWorkspaceID} alt="LaunchDarkly Project" class="ui centered big image grey-border box-shadow" />
+            </div>
+          </div>
 
-      <div class="ui horizontal divider">
-        <i class="inverted angle double down icon"></i>
+          <div class="ui horizontal divider">
+            <i class="inverted angle double down icon"></i>
+          </div>
+          <h2 class="ui small inverted center aligned icon header">
+            <i class="flag icon"></i>
+            Link a Flag
+          </h2>
+          <p>In the Jira issue sidebar, under FlagShip</p>
+          <Image src={flagshipLink} alt="FlagShip Link" class="ui centered big image grey-border box-shadow" />
+    
+          <div class="ui horizontal divider">
+            <i class="inverted angle double down icon"></i>
+          </div>
+          <h2 class="ui small inverted center aligned icon header">
+            <i class="toggle on icon"></i>
+            Toggle Flags
+          </h2>
+          <p>Turn features on or off</p>
+          <Image src={flagshipToggle} alt="FlagShip Toggle" class="ui centered big image grey-border box-shadow" />
+        </div>
       </div>
-      <h2 class="ui small inverted center aligned icon header">
-        <i class="toggle on icon"></i>
-        Toggle Flags
-      </h2>
-      <p>Turn features on or off</p>
-      <Image src={flagshipToggle} alt="FlagShip Toggle" class="ui centered big image grey-border box-shadow" />
+
+      
     </div>
   </div>
 </Layout>
