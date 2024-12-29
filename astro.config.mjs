@@ -5,6 +5,6 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://upgrade-solutions.github.io',
   integrations: [react()],
-  output: 'server',
+  // output: 'server',
   devToolbar: { enabled: false }
 })
