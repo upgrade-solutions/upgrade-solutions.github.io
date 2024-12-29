@@ -1,29 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Menu from '../components/Menu.astro';
-import Hero from '../components/Hero.astro';
-import Why from '../components/Why.astro';
-import How from '../components/How.astro';
-import What from '../components/What.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../layouts/Footer.astro';
-import '../styles/styles.css';
+import App from '../components/App.tsx';
+import '../styles/global.css';
 ---
-<Layout title="Upgrade Solutions">
-	<!-- <Menu></Menu> -->
-	<Hero></Hero>
-	
-	<div id="main" class="ui container">
-		<div class="ui hidden divider"></div>
-		<div class="ui hidden divider"></div>
-		<Why></Why>
-		<div class="ui divider"></div>
-		<How></How>
-		<div class="ui divider"></div>
-		<What></What>
-		<div class="ui divider"></div>
-		<Contact></Contact>
-		<div class="ui hidden divider"></div>
-		<div class="ui divider"></div>
-		<Footer></Footer>
-</Layout>
+
+<div>
+	<App client:load />
+</div>

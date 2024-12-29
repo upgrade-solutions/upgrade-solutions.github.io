@@ -1,0 +1,8 @@
+body, html {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.ant-anchor-wrapper-horizontal::before { border-bottom: none !important; }
