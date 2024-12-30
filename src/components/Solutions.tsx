@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Steps, Typography, theme } from 'antd';
 import { FileTextOutlined, LayoutOutlined, CodeOutlined, DeploymentUnitOutlined } from '@ant-design/icons';
 import Discover from './Discover';
@@ -10,6 +10,7 @@ const { Title } = Typography;
 const Solutions: React.FC = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = React.useState(0);
+  const [isAutoTransition, setIsAutoTransition] = useState(true);
 
   const iconStyle = {
     fontSize: '24px',
@@ -49,6 +50,21 @@ const Solutions: React.FC = () => {
     { title: 'Deliver', content: <Deliver />, icon: <DeploymentUnitOutlined style={getIconStyle(3)} />, status: getStatus(3) },
   ];
 
+  useEffect(() => {
+    if (isAutoTransition) {
+      const interval = setInterval(() => {
+        setCurrent(prev => (prev + 1) % steps.length);
+      }, 7000); // 7 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [isAutoTransition, steps.length]);
+
+  const handleStepClick = (index: number) => {
+    setCurrent(index);
+    setIsAutoTransition(false);
+  };
+
   return (
     <div id="solutions" style={{ maxWidth: 620, margin: '50px auto 40px auto', padding: '0 16px', color: 'black !important' }}>
       {/* <Title level={3} style={{ textAlign: 'center' }}>Solutions</Title> */}
@@ -56,7 +72,7 @@ const Solutions: React.FC = () => {
         current={current} 
         labelPlacement="vertical" 
         items={steps}
-        onChange={setCurrent}
+        onChange={handleStepClick}
         style={{ marginTop: 40 }}
       />
       <div style={contentStyle}>{steps[current].content}</div>

@@ -24,7 +24,7 @@ const solutionsData = [
 const Discover: React.FC = () => (
   <>
     <Paragraph style={{ textAlign: 'center' }}>
-      Our AI tools can gather and analyze information from various sources to generate detailed scopes of work, ensuring a clear understanding of project requirements and objectives.
+      Our AI tools can gather and analyze information from various sources to generate detailed scopes of work, ensuring a clear understanding of project requirements.
     </Paragraph>
     <List
       itemLayout="horizontal"

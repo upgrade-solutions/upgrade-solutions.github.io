@@ -19,7 +19,7 @@ const solutionsData = [
 const Develop: React.FC = () => (
   <>
     <Paragraph style={{ textAlign: 'center' }}>
-      We use AI-powered tools to assist in representing domain logic accurately while automating repetitive tasks, allowing developers to focus on crafting high-quality software.
+      We use AI-powered tools to assist in representing domain logic accurately while automating repetitive tasks, so developers can focus on crafting high-quality software.
     </Paragraph>
     <List
       itemLayout="horizontal"
