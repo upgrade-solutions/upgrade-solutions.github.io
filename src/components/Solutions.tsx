@@ -18,7 +18,7 @@ const Solutions: React.FC = () => {
     backgroundColor: token.colorPrimary,
     // borderColor: token.colorPrimaryBg,
     padding: '16px',
-    marginLeft: '-10px',
+    margin: '-10px 0 0 -10px',
   };
 
   const contentStyle: React.CSSProperties = {
@@ -50,7 +50,7 @@ const Solutions: React.FC = () => {
   ];
 
   return (
-    <div id="solutions" style={{ maxWidth: 600, margin: '50px auto 40px auto', color: 'black !important' }}>
+    <div id="solutions" style={{ maxWidth: 620, margin: '50px auto 40px auto', padding: '0 16px', color: 'black !important' }}>
       {/* <Title level={3} style={{ textAlign: 'center' }}>Solutions</Title> */}
       <Steps 
         current={current} 

@@ -5,7 +5,8 @@ const { Title } = Typography;
 const sectionStyle: React.CSSProperties = {
   margin: '0 auto',
   textAlign: 'center',
-  width: '400px'
+  maxWidth: '500px',
+  padding: '0 20px',
 };
 
 const HeroSection = () => {
@@ -17,8 +18,7 @@ const HeroSection = () => {
         backgroundColor: token.colorPrimary,
         height: '380px',
         width: '100%',
-        backgroundSize: 'cover',
-        margin: '0 auto',
+        margin: 0
       }}>
         <div style={sectionStyle}>
           <Image src={upgradeLogo.src} alt="Upgrade Logo" preview={false} style={{ marginTop: 100 }} />

@@ -16,14 +16,13 @@ const contentStyle: React.CSSProperties = {
 const footerStyle: React.CSSProperties = {
   textAlign: 'center',
   color: '#fff',
+  padding: '16px 0',
 };
 
-const layoutStyle = {
-  margin: '0 auto',
+const layoutStyle: React.CSSProperties = {
+  margin: 0,
   padding: 0,
-  // overflow: 'hidden',
-  // minWidth: 400,
-  // maxWidth: 600,
+  width: '100%',
 };
 
 const MainLayout: React.FC = () => {
