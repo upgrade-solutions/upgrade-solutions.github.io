@@ -40,15 +40,19 @@ const MainLayout: React.FC = () => {
   };
 
   return (
-    <Layout style={layoutStyle}>
-      <Header style={headerStyle}><HeaderMenu /></Header>
-      <Content style={contentStyle}>
-        <HeroSection />
-        <Solutions />
-        <Contact />
-      </Content>
-      <Footer style={footerStyle}><FooterContent /></Footer>
-    </Layout>
+    <>
+      {typeof window !== 'undefined' && (
+        <Layout style={layoutStyle}>
+          <Header style={headerStyle}><HeaderMenu /></Header>
+          <Content style={contentStyle}>
+            <HeroSection />
+            <Solutions />
+            <Contact />
+          </Content>
+          <Footer style={footerStyle}><FooterContent /></Footer>
+        </Layout>
+      )}
+    </>
   )
 };
 
