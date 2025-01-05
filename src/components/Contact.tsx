@@ -24,11 +24,6 @@ const Contact: React.FC = () => {
             <LinkedinOutlined style={{ fontSize: '32px' }} />
           </a>
         </Col>
-        <Col>
-          <a href="https://twitter.com/timkleier" target="_blank" rel="noopener noreferrer">
-            <TwitterOutlined style={{ fontSize: '32px' }} />
-          </a>
-        </Col>
       </Row>
     </div>
   );
