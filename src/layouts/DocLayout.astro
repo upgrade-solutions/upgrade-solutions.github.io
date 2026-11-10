@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="stylesheet" href="/docs.css" />
+</head>
+<body>
+  <header>
+    <a href="/">Upgrade Solutions</a>
+    <nav>
+      <a href="/flagship/">FlagShip</a>
+      <a href="/cql-search/">CQL Search</a>
+      <a href="/terms/">Terms</a>
+      <a href="https://www.privacypolicies.com/live/728108d2-3caf-465b-9fb4-3746765b8434">Privacy</a>
+    </nav>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <p>&copy; {new Date().getFullYear()} Upgrade Solutions LLC</p>
+    <p><a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a></p>
+  </footer>
+</body>
+</html>

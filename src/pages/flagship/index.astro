@@ -1,0 +1,17 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+---
+<DocLayout
+  title="FlagShip Feature Flags"
+  description="Toggle LaunchDarkly and Split feature flags from a Jira issue."
+>
+  <h1>FlagShip Feature Flags</h1>
+  <p>FlagShip links a Jira issue to a LaunchDarkly or Split feature flag and lets people who can see the issue turn that flag on or off in each environment.</p>
+  <h2>Set up</h2>
+  <p>Open <strong>FlagShip Config</strong> in Jira administration. Connect LaunchDarkly with an access token and project, or Split with an API key and workspace.</p>
+  <h2>Use it on an issue</h2>
+  <p>Open a Jira issue and choose the flag to link. The issue panel shows the flag in each environment. Turn a flag on or off there.</p>
+  <h2>Support</h2>
+  <p>Email <a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a>.</p>
+  <p>Upgrade Solutions LLC does not store Jira issue data. Provider credentials are used to talk to LaunchDarkly or Split on your behalf.</p>
+</DocLayout>

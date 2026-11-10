@@ -1,0 +1,21 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+---
+<DocLayout
+  title="CQL Search for Confluence"
+  description="Run a CQL query and show the results on a Confluence page or a global page."
+>
+  <h1>CQL Search for Confluence</h1>
+  <p>CQL Search runs one Confluence Query Language search as the person viewing the page and shows the matches in a table. It can also download the rows on the current page as CSV.</p>
+  <h2>Search from the global page</h2>
+  <p>In Confluence, open Apps and choose <strong>CQL Search</strong>. Enter a query and choose Search. <code>spaceKey()</code>, <code>pageId()</code>, <code>currentSpace()</code>, and <code>currentContent()</code> are not available on this page. <code>currentUser()</code> is left for Confluence to resolve.</p>
+  <h2>Embed a search on a page</h2>
+  <p>Edit a page, type <code>/CQL Search</code>, and insert the macro. Save a query, the columns to show, and a page size of 10, 25, or 50. On a page, <code>currentSpace()</code> and <code>spaceKey()</code> use that page's space. <code>currentContent()</code> and <code>pageId()</code> use that page.</p>
+  <p>Example:</p>
+  <p><code>space = currentSpace() and type = page order by title asc</code></p>
+  <h2>Results</h2>
+  <p>Use Next and Previous when a query has more matches than the page size. Download CSV saves only the rows currently shown. People see only the content Confluence already allows them to see.</p>
+  <h2>Support</h2>
+  <p>Email <a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a>.</p>
+  <p>The app stores nothing of its own. The query, columns, and page size stay in the macro configuration on the page.</p>
+</DocLayout>

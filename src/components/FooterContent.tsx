@@ -11,7 +11,7 @@ const FooterContent: React.FC = () => (
       <Col span={12} style={{ textAlign: 'right', fontSize: '0.9em' }}>
         <Space size="middle">
           <a href="https://www.privacypolicies.com/live/728108d2-3caf-465b-9fb4-3746765b8434" target="_blank">Privacy Policy</a>
-          <a href="https://drive.google.com/file/d/1Ds0W0xvZ8Du8DAGXXuufa3ShhGcNgEo9/view?usp=sharing" target="_blank">Terms of Use</a>
+          <a href="/terms/">Terms of Use</a>
         </Space>
       </Col>
     </Row>
