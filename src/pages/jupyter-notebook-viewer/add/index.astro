@@ -1,0 +1,52 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+import JupyterNav from '../../../components/JupyterNav.astro';
+import { SITE, UPDATED } from '../../../data/jupyter-notebook-viewer.js';
+
+const title = 'Add a Jupyter notebook to a Confluence page';
+const description = 'Attach a .ipynb file to the Confluence page, type /Jupyter Notebook, and insert it. One notebook on the page is selected for you.';
+const canonical = `${SITE}/jupyter-notebook-viewer/add/`;
+const howTo = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Add a Jupyter notebook to a Confluence page',
+  description,
+  totalTime: 'PT5M',
+  step: [
+    { '@type': 'HowToStep', name: 'Attach the file', text: 'Open the Confluence page or blog post and attach the .ipynb file to that page.' },
+    { '@type': 'HowToStep', name: 'Insert the macro', text: 'Edit the page, type /Jupyter Notebook, and insert Jupyter Notebook.' },
+    { '@type': 'HowToStep', name: 'Choose the notebook', text: 'Select the filename. If the page has one notebook, that file is already selected.' },
+    { '@type': 'HowToStep', name: 'Publish', text: 'Insert the notebook and publish the page. People who can view the page see that file.' },
+  ],
+};
+---
+<DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/jupyter-notebook-viewer/og.png`} jsonLd={howTo}>
+  <JupyterNav />
+  <h1>Add a notebook to a page</h1>
+  <p class="lede">Jupyter Notebook Viewer for Confluence shows one .ipynb file that is already attached to the current page or blog post. The file has to be nbformat 4, which is the notebook format Jupyter has saved for years.</p>
+  <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
+
+  <h2>Attach the file</h2>
+  <ol>
+    <li>Open the page.</li>
+    <li>Attach the <code>.ipynb</code> file to that page. A link to a notebook on another website will not work.</li>
+    <li>Edit the page and type <code>/Jupyter Notebook</code>.</li>
+    <li>Choose the file. If the page has one notebook, that file is already selected.</li>
+    <li>Select <strong>Insert notebook</strong>, then publish the page.</li>
+  </ol>
+  <p>People who can view the page see that notebook, with their own permission to the page. The app does not keep a separate copy.</p>
+
+  <h2>On a blog post</h2>
+  <p>The same steps work on a blog post. The app looks up attachments on the post you are editing.</p>
+
+  <h2>One notebook per macro</h2>
+  <p>Each macro shows one file. To show a second notebook, attach it and insert the macro again.</p>
+
+  <h2>Files the app will not open</h2>
+  <ul>
+    <li>A notebook that is not nbformat 4.</li>
+    <li>A file larger than 2 MB. In Jupyter, clear large outputs, save, and attach the file again.</li>
+    <li>A file that is not attached to this page. If the file is renamed, edit the macro and choose the new name.</li>
+  </ul>
+  <p>If the macro asks you to choose a file, the steps are on the <a href="/jupyter-notebook-viewer/troubleshooting/">troubleshooting</a> page.</p>
+</DocLayout>

@@ -1,0 +1,77 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+import JupyterNav from '../../components/JupyterNav.astro';
+import { SITE, UPDATED, faqs, faqSchema, appSchema } from '../../data/jupyter-notebook-viewer.js';
+
+const title = 'Jupyter Notebook Viewer for Confluence';
+const description = 'Read an attached Jupyter notebook on the Confluence page: the write-up, the code, or only the results. Plots saved as PNG or JPEG stay in the file.';
+const canonical = `${SITE}/jupyter-notebook-viewer/`;
+---
+<DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/jupyter-notebook-viewer/og.png`} jsonLd={[appSchema(), faqSchema()]}>
+  <JupyterNav />
+  <p class="kicker">Forge app for Confluence Cloud · Upgrade Solutions</p>
+  <h1>Jupyter Notebook Viewer for Confluence</h1>
+  <p class="lede">Jupyter Notebook Viewer for Confluence renders one .ipynb file already attached to the page. Readers see the markdown, the code, text output, and plots saved as PNG or JPEG. The notebook is not loaded from another website.</p>
+  <p>The page does not run the notebook. Numbers and charts are the ones saved in the file. The app runs on Atlassian, stores nothing of its own, and does not send the notebook to another service. Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
+
+  <figure>
+    <img src="/jupyter-notebook-viewer/read.png" alt="A quarterly forecast notebook on a Confluence page, with the write-up, a table, and highlighted Python in the reading pane." width="1840" height="900" />
+    <figcaption>The reading pane keeps a long notebook on the page: headings, the table, and the code.</figcaption>
+  </figure>
+
+  <h2>What it is for</h2>
+  <ul>
+    <li>A forecast or analysis write-up, with the notebook that produced it on the same page.</li>
+    <li>A result you can hand to someone who should not have to read the code.</li>
+    <li>A saved chart that has to match the file, because the page does not re-run the cells.</li>
+    <li>A code review of the cells that were saved, with outputs hidden.</li>
+  </ul>
+  <p>Start with <a href="/jupyter-notebook-viewer/add/">adding a notebook</a>. <a href="/jupyter-notebook-viewer/reading/">Reading a notebook</a> covers Results, Code, and In/Out.</p>
+
+  <h2>Three ways to read the same file</h2>
+  <figure>
+    <img src="/jupyter-notebook-viewer/modes.gif" alt="The same notebook switching among Notebook, Results, and Code." width="1000" height="673" />
+    <figcaption>Notebook, Results, and Code are the same attachment. The choice stays in that browser.</figcaption>
+  </figure>
+  <ul>
+    <li><strong>Notebook</strong> shows the write-up and the code, with outputs under the cells.</li>
+    <li><strong>Results</strong> hides the code. The numbers and the chart remain.</li>
+    <li><strong>Code</strong> hides outputs, so a review stays on the cells.</li>
+  </ul>
+
+  <h2>Saved plots</h2>
+  <figure>
+    <img src="/jupyter-notebook-viewer/plots.png" alt="A PNG line chart stored in the notebook, shown in the Confluence reading pane." width="1840" height="900" />
+    <figcaption>PNG and JPEG outputs stored in the notebook are shown. The page does not run the cell again.</figcaption>
+  </figure>
+  <p>HTML, widgets, and error tracebacks are left out. The <a href="/jupyter-notebook-viewer/limits/">limits</a> page lists each case. If a chart is missing, the usual cause is that Jupyter saved it as HTML or SVG rather than PNG.</p>
+
+  <h2>Price</h2>
+  <p>Up to 10 users is $5 a month. Atlassian bills Cloud apps annually at ten times the monthly price, so that tier is about $50 a year. Larger sites pay a yearly tier.</p>
+  <table>
+    <thead>
+      <tr><th>Users</th><th>About a year</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Up to 10</td><td>$50</td></tr>
+      <tr><td>15</td><td>$75</td></tr>
+      <tr><td>25</td><td>$125</td></tr>
+      <tr><td>50</td><td>$250</td></tr>
+      <tr><td>100</td><td>$500</td></tr>
+      <tr><td>500</td><td>$1,450</td></tr>
+      <tr><td>1,000</td><td>$2,450</td></tr>
+    </tbody>
+  </table>
+  <p>A 30-day trial comes with Paid via Atlassian. Above 1,000 users the yearly price steps up by about $200 per extra 1,000 users through 10,000, then by about $1,000 per extra 10,000 users.</p>
+
+  <h2>Questions</h2>
+  {faqs.map((item) => (
+    <section>
+      <h3>{item.question}</h3>
+      <p>{item.answer}</p>
+    </section>
+  ))}
+
+  <h2>Support</h2>
+  <p>Email <a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a>. Include the page URL, the attachment filename, and a screenshot of the message in the macro. Say whether you are editing the page or viewing the published page.</p>
+</DocLayout>

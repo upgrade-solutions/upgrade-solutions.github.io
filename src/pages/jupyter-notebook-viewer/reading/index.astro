@@ -1,0 +1,50 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+import JupyterNav from '../../../components/JupyterNav.astro';
+import { SITE, UPDATED } from '../../../data/jupyter-notebook-viewer.js';
+
+const title = 'Read a Jupyter notebook on a Confluence page';
+const description = 'Use Notebook, Results, Code, In/Out, and Expand to read an attached .ipynb file on the Confluence page. The page shows outputs saved in the file.';
+const canonical = `${SITE}/jupyter-notebook-viewer/reading/`;
+---
+<DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/jupyter-notebook-viewer/results.png`}>
+  <JupyterNav />
+  <h1>Read a notebook on the page</h1>
+  <p class="lede">The notebook opens in a reading pane, so a long file does not take over the page. Results hides the code. Code hides the outputs. The numbers are the ones saved in the file.</p>
+  <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
+
+  <figure>
+    <img src="/jupyter-notebook-viewer/results.png" alt="Results mode on a Confluence page, with the code hidden and a saved chart and the number 0.041 still visible." width="1840" height="900" />
+    <figcaption>Results hides the code. Readers still get the numbers and the chart from the file.</figcaption>
+  </figure>
+
+  <h2>Controls</h2>
+  <table>
+    <thead>
+      <tr><th>Control</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Notebook</td><td>Shows the write-up and the code, with outputs under the code.</td></tr>
+      <tr><td>Results</td><td>Hides code and shows outputs.</td></tr>
+      <tr><td>Code</td><td>Hides outputs and shows the cells.</td></tr>
+      <tr><td>In/Out</td><td>Shows or hides execution numbers.</td></tr>
+      <tr><td>Expand</td><td>Lets the notebook flow with the page. Choose it again to fit the pane.</td></tr>
+      <tr><td>Contents</td><td>Jumps to a Markdown heading inside the pane.</td></tr>
+      <tr><td>Copy</td><td>Copies that code cell.</td></tr>
+    </tbody>
+  </table>
+  <p>Notebook, Results, Code, In/Out, and Expand are remembered in the browser. Another reader starts from the full notebook.</p>
+
+  <h2>What is rendered</h2>
+  <ul>
+    <li>Markdown headings, paragraphs, lists, tables, quotes, and fenced code.</li>
+    <li>Bold, emphasis, inline code, and links that start with <code>http://</code> or <code>https://</code>.</li>
+    <li>Code cells, including the language saved with the notebook.</li>
+    <li>Stream text and plain text outputs. A single text output is cut at 20,000 characters.</li>
+    <li>Plots stored in the file as PNG or JPEG.</li>
+  </ul>
+  <p>The first 200 cells are shown. If the file has more, the pane says the rest were omitted.</p>
+
+  <h2>What the page does not do</h2>
+  <p>The page does not execute the notebook. To refresh a figure, run the notebook in Jupyter, save, and attach the new file. HTML and widgets are covered on the <a href="/jupyter-notebook-viewer/limits/">limits</a> page.</p>
+</DocLayout>

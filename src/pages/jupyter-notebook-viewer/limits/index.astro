@@ -1,0 +1,36 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+import JupyterNav from '../../../components/JupyterNav.astro';
+import { SITE, UPDATED } from '../../../data/jupyter-notebook-viewer.js';
+
+const title = 'What Jupyter Notebook Viewer leaves out';
+const description = 'Jupyter Notebook Viewer for Confluence shows markdown, code, text, and PNG or JPEG plots. HTML, widgets, tracebacks, and SVG are left out. The page does not run the notebook.';
+const canonical = `${SITE}/jupyter-notebook-viewer/limits/`;
+---
+<DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/jupyter-notebook-viewer/og.png`}>
+  <JupyterNav />
+  <h1>What is left out</h1>
+  <p class="lede">Jupyter Notebook Viewer for Confluence is a reader for a file that is already on the page. A few notebook features are omitted on purpose.</p>
+  <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
+
+  <table>
+    <thead>
+      <tr><th>In the file</th><th>On the page</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Markdown text, lists, tables, and headings</td><td>Shown</td></tr>
+      <tr><td>Code source</td><td>Shown</td></tr>
+      <tr><td>Printed text and plain results</td><td>Shown</td></tr>
+      <tr><td>PNG or JPEG embedded in the notebook</td><td>Shown</td></tr>
+      <tr><td>HTML output</td><td>Left out</td></tr>
+      <tr><td>JavaScript widgets, including many interactive charts</td><td>Left out</td></tr>
+      <tr><td>Error tracebacks</td><td>Left out</td></tr>
+      <tr><td>SVG and other image types</td><td>Left out</td></tr>
+      <tr><td>Markdown images that point at a URL</td><td>Not fetched. The alt text is shown as text.</td></tr>
+      <tr><td>A notebook URL</td><td>Not supported. Attach the .ipynb to the page.</td></tr>
+    </tbody>
+  </table>
+  <p>When an output is left out, the pane says so. The code above that output is still shown.</p>
+  <p>HTML is left out so the page does not run markup or scripts that arrived inside a notebook. Interactive widgets need a kernel and a browser runtime this app does not provide.</p>
+  <p>The app does not send the notebook, or any part of it, to a service outside Atlassian. Files over 2 MB are refused before they are read. Only the first 200 cells are shown, and a single text output is cut at 20,000 characters.</p>
+</DocLayout>
