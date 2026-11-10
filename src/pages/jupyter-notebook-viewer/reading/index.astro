@@ -1,6 +1,5 @@
 ---
 import DocLayout from '../../../layouts/DocLayout.astro';
-import JupyterNav from '../../../components/JupyterNav.astro';
 import { SITE, UPDATED } from '../../../data/jupyter-notebook-viewer.js';
 
 const title = 'Read a Jupyter notebook on a Confluence page';
@@ -8,8 +7,7 @@ const description = 'Use Notebook, Results, Code, In/Out, and Expand to read an 
 const canonical = `${SITE}/jupyter-notebook-viewer/reading/`;
 ---
 <DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/jupyter-notebook-viewer/results.png`}>
-  <JupyterNav />
-  <h1>Read a notebook on the page</h1>
+  <h1>Reading</h1>
   <p class="lede">The notebook opens in a reading pane, so a long file does not take over the page. Results hides the code. Code hides the outputs. The numbers are the ones saved in the file.</p>
   <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
 
@@ -35,7 +33,7 @@ const canonical = `${SITE}/jupyter-notebook-viewer/reading/`;
   </table>
   <p>Notebook, Results, Code, In/Out, and Expand are remembered in the browser. Another reader starts from the full notebook.</p>
 
-  <h2>What is rendered</h2>
+  <h2>Output</h2>
   <ul>
     <li>Markdown headings, paragraphs, lists, tables, quotes, and fenced code.</li>
     <li>Bold, emphasis, inline code, and links that start with <code>http://</code> or <code>https://</code>.</li>
@@ -45,6 +43,6 @@ const canonical = `${SITE}/jupyter-notebook-viewer/reading/`;
   </ul>
   <p>The first 200 cells are shown. If the file has more, the pane says the rest were omitted.</p>
 
-  <h2>What the page does not do</h2>
+  <h2>Limits</h2>
   <p>The page does not execute the notebook. To refresh a figure, run the notebook in Jupyter, save, and attach the new file. HTML and widgets are covered on the <a href="/jupyter-notebook-viewer/limits/">limits</a> page.</p>
 </DocLayout>

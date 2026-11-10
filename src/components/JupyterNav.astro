@@ -1,7 +1,15 @@
+---
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const items = [
+  { href: '/jupyter-notebook-viewer/', label: 'Overview' },
+  { href: '/jupyter-notebook-viewer/add/', label: 'Add a notebook' },
+  { href: '/jupyter-notebook-viewer/reading/', label: 'Read it' },
+  { href: '/jupyter-notebook-viewer/limits/', label: 'Limits' },
+  { href: '/jupyter-notebook-viewer/troubleshooting/', label: 'Troubleshooting' },
+];
+---
 <nav class="sub" aria-label="Jupyter Notebook Viewer guides">
-  <a href="/jupyter-notebook-viewer/">Overview</a>
-  <a href="/jupyter-notebook-viewer/add/">Add a notebook</a>
-  <a href="/jupyter-notebook-viewer/reading/">Read it</a>
-  <a href="/jupyter-notebook-viewer/limits/">Limits</a>
-  <a href="/jupyter-notebook-viewer/troubleshooting/">Troubleshooting</a>
+  {items.map((item) => (
+    <a href={item.href} aria-current={path === item.href.replace(/\/$/, '') ? 'page' : undefined}>{item.label}</a>
+  ))}
 </nav>

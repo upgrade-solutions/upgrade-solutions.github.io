@@ -1,0 +1,33 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+
+const title = 'Turn a feature flag on or off from a Jira issue';
+const description = 'Link one LaunchDarkly or Split flag to a Jira issue, then save an on or off change for each environment from the FlagShip panel.';
+---
+<DocLayout title={title} description={description}>
+  <h1>On an issue</h1>
+  <p class="lede">Open a Jira issue and use the <strong>FlagShip</strong> panel. One flag is linked to the issue. Each environment has its own on or off control and its own <strong>Save</strong>.</p>
+  <p>Updated <time datetime="2026-11-10">10 November 2026</time>.</p>
+
+  <h2>Link a flag</h2>
+  <p>If no flag is linked, the panel says <strong>No feature flag linked.</strong></p>
+  <ol>
+    <li>Choose <strong>Link a flag</strong>.</li>
+    <li>Choose a flag from the list FlagShip loaded from the connected provider.</li>
+  </ol>
+  <p>The panel then shows the flag name and one row per environment. Linking a different flag starts again after you clear the current one.</p>
+
+  <h2>Save a change</h2>
+  <p>Move the toggle for an environment, then choose <strong>Save</strong> on that row. The toggle does not call the provider until you save.</p>
+  <ul>
+    <li>LaunchDarkly: Save turns that flag on or off in that environment.</li>
+    <li>Split: Save restores the flag or kills it in that environment. Targeting rules stay in Split.</li>
+  </ul>
+  <p>A row that says <strong>N/A</strong> has no toggle. The flag is not set up in that environment at the provider, so FlagShip has nothing to change there.</p>
+
+  <h2>Clear flag</h2>
+  <p><strong>Clear flag</strong> removes the link from this issue. The flag remains at LaunchDarkly or Split, and its on or off state is left as it was.</p>
+
+  <h2>Who can use the panel</h2>
+  <p>Anyone who can see the issue can link a flag and save a change. FlagShip does not add its own approver. If a connection has not been saved, the panel says to connect a provider in app settings. An admin does that on <a href="/flagship/connect/">Connect</a>.</p>
+</DocLayout>

@@ -1,6 +1,5 @@
 ---
 import DocLayout from '../../../layouts/DocLayout.astro';
-import JupyterNav from '../../../components/JupyterNav.astro';
 import { SITE, UPDATED } from '../../../data/jupyter-notebook-viewer.js';
 
 const title = 'Add a Jupyter notebook to a Confluence page';
@@ -21,8 +20,7 @@ const howTo = {
 };
 ---
 <DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/jupyter-notebook-viewer/og.png`} jsonLd={howTo}>
-  <JupyterNav />
-  <h1>Add a notebook to a page</h1>
+  <h1>Add a notebook</h1>
   <p class="lede">Jupyter Notebook Viewer for Confluence shows one .ipynb file that is already attached to the current page or blog post. The file has to be nbformat 4, which is the notebook format Jupyter has saved for years.</p>
   <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
 
@@ -39,10 +37,10 @@ const howTo = {
   <h2>On a blog post</h2>
   <p>The same steps work on a blog post. The app looks up attachments on the post you are editing.</p>
 
-  <h2>One notebook per macro</h2>
+  <h2>One notebook</h2>
   <p>Each macro shows one file. To show a second notebook, attach it and insert the macro again.</p>
 
-  <h2>Files the app will not open</h2>
+  <h2>Refused files</h2>
   <ul>
     <li>A notebook that is not nbformat 4.</li>
     <li>A file larger than 2 MB. In Jupyter, clear large outputs, save, and attach the file again.</li>

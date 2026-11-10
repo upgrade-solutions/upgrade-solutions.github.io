@@ -1,6 +1,5 @@
 ---
 import DocLayout from '../../../layouts/DocLayout.astro';
-import CqlNav from '../../../components/CqlNav.astro';
 import { SITE, UPDATED } from '../../../data/cql-search.js';
 
 const title = 'CQL Search use cases for Confluence';
@@ -8,17 +7,16 @@ const description = 'Four CQL Search setups: a living space index, stale content
 const canonical = `${SITE}/cql-search/use-cases/`;
 ---
 <DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/cql-search/og.png`}>
-  <CqlNav />
   <h1>Use cases</h1>
   <p class="lede">These are the searches teams pin to a page. Each one is a single CQL query. Paste it into the <a href="/cql-search/embed/">CQL Search macro</a>.</p>
   <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
 
-  <h2>A space index that does not go stale</h2>
+  <h2>Space index</h2>
   <p>Put this on the space home page. New pages show up without anyone editing the list. Sort by title when the space is a catalog, or by <code>lastModified</code> when it is a log.</p>
   <pre><code>space = currentSpace() AND type = page ORDER BY title ASC</code></pre>
   <p>Columns: Title, Modified, Creator. Page size 25.</p>
 
-  <h2>Find what has gone quiet</h2>
+  <h2>Quiet pages</h2>
   <p>A cleanup page for content nobody has touched in half a year. The date stays relative, so you do not edit the macro every Monday.</p>
   <pre><code>type = page AND space = currentSpace() AND lastModified &lt; now("-180d") ORDER BY lastModified ASC</code></pre>
   <figure>
@@ -27,12 +25,12 @@ const canonical = `${SITE}/cql-search/use-cases/`;
   </figure>
   <p>Columns: Title, Modified, Creator. Read it as a review list, not as a delete button. The app does not change or remove pages.</p>
 
-  <h2>Pages a person contributed to</h2>
+  <h2>Contributions</h2>
   <p>On a team home page, this table is different for every reader. Confluence fills in <code>currentUser()</code> when that person opens the page.</p>
   <pre><code>type = page AND contributor = currentUser() ORDER BY lastModified DESC</code></pre>
   <p>Columns: Title, Space, Modified. It works in the macro and on the Apps page.</p>
 
-  <h2>Find runbooks by title</h2>
+  <h2>Title search</h2>
   <p>When the useful pages share a word in the title, search that word and pin the table. <code>~</code> matches the text. It does not have to be the whole title.</p>
   <pre><code>type = page AND title ~ "runbook" ORDER BY lastModified DESC</code></pre>
   <figure>
@@ -41,12 +39,12 @@ const canonical = `${SITE}/cql-search/use-cases/`;
   </figure>
   <p>Columns: Title, Space, Modified.</p>
 
-  <h2>The handbook, wherever the files live</h2>
+  <h2>Labeled files</h2>
   <p>Label the attachments <code>handbook</code>, then pin the list somewhere people start their day.</p>
   <pre><code>type = attachment AND label = "handbook" ORDER BY lastModified DESC</code></pre>
   <p>Columns: Title, Space, Modified. Title opens the attachment.</p>
 
-  <h2>Children of the page you are reading</h2>
+  <h2>Child pages</h2>
   <p>Useful under a project or policy page, where the children are the current set of docs.</p>
   <pre><code>parent = currentContent() AND type = page ORDER BY title ASC</code></pre>
   <p>This token only works in the macro. <code>ancestor = currentContent()</code> lists every descendant, not only the next level.</p>

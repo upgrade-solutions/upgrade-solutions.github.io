@@ -1,0 +1,165 @@
+---
+import logo from '../assets/upgrade_logo_nav.png';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const onHome = path === '/';
+const apps = [
+  { href: '/flagship/', label: 'FlagShip', current: path.startsWith('/flagship') },
+  { href: '/cql-search/', label: 'CQL Search', current: path.startsWith('/cql-search') },
+  { href: '/jupyter-notebook-viewer/', label: 'Jupyter Notebook Viewer', current: path.startsWith('/jupyter-notebook-viewer') },
+];
+const onApp = apps.some((app) => app.current);
+const linksBefore = [
+  { href: onHome ? '#home' : '/#home', label: 'Home', current: onHome },
+  { href: onHome ? '#solutions' : '/#solutions', label: 'Solutions', current: false },
+];
+const contact = { href: onHome ? '#contact' : '/#contact', label: 'Contact' };
+---
+<header class="site-header">
+  <a class="brand" href="/">
+    <img src={logo.src} alt="Upgrade Solutions" width={logo.width} height={logo.height} />
+  </a>
+  <nav aria-label="Site">
+    {linksBefore.map((link) => (
+      <a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a>
+    ))}
+    <details class:list={['apps', { current: onApp }]}>
+      <summary>Atlassian Apps</summary>
+      <div class="panel">
+        {apps.map((app) => (
+          <a href={app.href} aria-current={app.current ? 'page' : undefined}>{app.label}</a>
+        ))}
+      </div>
+    </details>
+    <a href={contact.href}>{contact.label}</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 28px;
+    min-height: 56px;
+    padding: 8px 24px;
+    background: #131313;
+    border-bottom: 3px solid #286b74;
+    font-family: "Open Sans", Arial, sans-serif;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+  }
+
+  .brand img {
+    height: 36px;
+    width: auto;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px 18px;
+  }
+
+  nav > a,
+  .apps summary {
+    color: lightgrey;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 4px 0;
+    cursor: pointer;
+  }
+
+  nav > a:hover,
+  .apps summary:hover {
+    color: #ffffff;
+  }
+
+  nav > a[aria-current="page"],
+  .apps.current summary {
+    color: #9fe0e6;
+    box-shadow: inset 0 -2px 0 #286b74;
+  }
+
+  .apps {
+    position: relative;
+  }
+
+  .apps summary {
+    list-style: none;
+  }
+
+  .apps summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .apps summary::after {
+    content: "";
+    display: inline-block;
+    margin-left: 6px;
+    border: 4px solid transparent;
+    border-top-color: currentColor;
+    transform: translateY(2px);
+  }
+
+  .panel {
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px;
+    background: #102628;
+    border: 1px solid #286b74;
+    border-radius: 8px;
+    z-index: 30;
+  }
+
+  .panel a {
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: lightgrey;
+    text-decoration: none;
+  }
+
+  .panel a:hover,
+  .panel a[aria-current="page"] {
+    background: #286b74;
+    color: #ffffff;
+    box-shadow: none;
+  }
+
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid #3d9aa3;
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 720px) {
+    .site-header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px 16px;
+    }
+
+    nav {
+      justify-content: flex-start;
+    }
+
+    .panel {
+      left: 0;
+      right: auto;
+    }
+  }
+</style>

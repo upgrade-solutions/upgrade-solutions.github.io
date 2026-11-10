@@ -1,4 +1,12 @@
 ---
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import CqlNav from '../components/CqlNav.astro';
+import JupyterNav from '../components/JupyterNav.astro';
+import FlagshipNav from '../components/FlagshipNav.astro';
+import '@fontsource/open-sans/latin-400.css';
+import '@fontsource/open-sans/latin-600.css';
+
 interface Props {
   title: string;
   description: string;
@@ -9,6 +17,14 @@ interface Props {
 
 const { title, description, canonical, image, jsonLd } = Astro.props;
 const schemas = jsonLd == null ? [] : Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+const path = Astro.url.pathname;
+const guide = path.includes('/cql-search')
+  ? 'cql'
+  : path.includes('/jupyter-notebook-viewer')
+    ? 'jupyter'
+    : path.includes('/flagship')
+      ? 'flagship'
+      : null;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -34,22 +50,25 @@ const schemas = jsonLd == null ? [] : Array.isArray(jsonLd) ? jsonLd : [jsonLd];
   ))}
 </head>
 <body>
-  <header>
-    <a href="/">Upgrade Solutions</a>
-    <nav>
-      <a href="/flagship/">FlagShip</a>
-      <a href="/cql-search/">CQL Search</a>
-      <a href="/jupyter-notebook-viewer/">Jupyter</a>
-      <a href="/terms/">Terms</a>
-      <a href="https://www.privacypolicies.com/live/728108d2-3caf-465b-9fb4-3746765b8434">Privacy</a>
-    </nav>
-  </header>
+  <SiteHeader />
+  {guide === 'cql' && (
+    <div class="guide-band">
+      <CqlNav />
+    </div>
+  )}
+  {guide === 'jupyter' && (
+    <div class="guide-band">
+      <JupyterNav />
+    </div>
+  )}
+  {guide === 'flagship' && (
+    <div class="guide-band">
+      <FlagshipNav />
+    </div>
+  )}
   <main>
     <slot />
   </main>
-  <footer>
-    <p>&copy; {new Date().getFullYear()} Upgrade Solutions LLC</p>
-    <p><a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a></p>
-  </footer>
+  <SiteFooter />
 </body>
 </html>

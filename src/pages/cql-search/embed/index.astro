@@ -1,6 +1,5 @@
 ---
 import DocLayout from '../../../layouts/DocLayout.astro';
-import CqlNav from '../../../components/CqlNav.astro';
 import { SITE, UPDATED } from '../../../data/cql-search.js';
 
 const title = 'Embed a CQL search on a Confluence page';
@@ -21,8 +20,7 @@ const howTo = {
 };
 ---
 <DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/cql-search/og.png`} jsonLd={howTo}>
-  <CqlNav />
-  <h1>Embed a CQL search on a page</h1>
+  <h1>Embed a search</h1>
   <p class="lede">The CQL Search macro keeps one query on the page and renders a table for whoever opens it. The query runs again for each viewer.</p>
   <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
 
@@ -37,7 +35,7 @@ const howTo = {
   </ol>
   <p>Until a query is saved, the macro says “Add a CQL query from the macro configuration.”</p>
 
-  <h2>Tokens that use this page</h2>
+  <h2>Page tokens</h2>
   <p>These tokens work only in the macro, because only the macro knows which page it sits on. They are replaced outside of quotes, and the value is inserted as a CQL string.</p>
   <table>
     <thead>
@@ -50,12 +48,12 @@ const howTo = {
   </table>
   <p>A query that uses one of those tokens on the Apps page fails with “Missing context,” because that page has no space or content id to substitute. <code>currentUser()</code> is not rewritten by the app. Confluence resolves it.</p>
 
-  <h2>A query worth saving</h2>
+  <h2>Example</h2>
   <p>Pages in this space, newest change first:</p>
   <pre><code>space = currentSpace() AND type = page ORDER BY lastModified DESC</code></pre>
   <p>More examples are in <a href="/cql-search/queries/">Write a query</a> and <a href="/cql-search/use-cases/">Use cases</a>.</p>
 
-  <h2>What readers see</h2>
+  <h2>Readers</h2>
   <p>The table loads when the page loads. Title is a link. Next and Previous appear when Confluence has another page of matches. Download CSV saves the rows currently shown. A viewer with no matches sees “Nothing matched.” A query Confluence rejects shows “Search failed” and the message from the search.</p>
   <p>An inactive license shows “Upgrade required” and does not run the search.</p>
 </DocLayout>

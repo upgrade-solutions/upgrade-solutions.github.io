@@ -21,9 +21,9 @@ const HeroSection = () => {
         margin: 0
       }}>
         <div style={sectionStyle}>
-          <Image src={upgradeLogo.src} alt="Upgrade Logo" preview={false} style={{ marginTop: 100 }} />
+          <Image src={upgradeLogo.src} alt="Upgrade Logo" preview={false} style={{ marginTop: 56 }} />
           <Title level={4} style={{ marginBottom: 40 }}>AI Solutions for Software Shops.</Title>
-          <Button size="large" block>Contact</Button>
+          <Button href="#contact" size="large" block>Contact</Button>
         </div>
       </div>
     </>

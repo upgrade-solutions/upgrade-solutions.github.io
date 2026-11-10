@@ -1,0 +1,15 @@
+---
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const items = [
+  { href: '/flagship/', label: 'Overview' },
+  { href: '/flagship/connect/', label: 'Connect' },
+  { href: '/flagship/issue/', label: 'On an issue' },
+  { href: '/flagship/data/', label: 'Stored data' },
+  { href: '/flagship/troubleshooting/', label: 'Troubleshooting' },
+];
+---
+<nav class="sub" aria-label="FlagShip guides">
+  {items.map((item) => (
+    <a href={item.href} aria-current={path === item.href.replace(/\/$/, '') ? 'page' : undefined}>{item.label}</a>
+  ))}
+</nav>

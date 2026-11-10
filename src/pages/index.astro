@@ -1,5 +1,8 @@
 ---
 import App from '../components/App.tsx';
+import SiteHeader from '../components/SiteHeader.astro';
+import '@fontsource/open-sans/latin-400.css';
+import '@fontsource/open-sans/latin-600.css';
 import '../styles/global.css';
 ---
 
@@ -23,6 +26,7 @@ import '../styles/global.css';
   <meta name="twitter:image" content="https://upgrade-solutions.github.io/twitter-image.jpg">
 </head>
 <body>
+  <SiteHeader />
   <div>
 		<App client:load />
 	</div>

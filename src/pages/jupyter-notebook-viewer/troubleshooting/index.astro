@@ -1,6 +1,5 @@
 ---
 import DocLayout from '../../../layouts/DocLayout.astro';
-import JupyterNav from '../../../components/JupyterNav.astro';
 import { SITE, UPDATED } from '../../../data/jupyter-notebook-viewer.js';
 
 const title = 'Jupyter Notebook Viewer troubleshooting';
@@ -8,38 +7,37 @@ const description = 'Fix an empty notebook list, a missing chart, a file over 2 
 const canonical = `${SITE}/jupyter-notebook-viewer/troubleshooting/`;
 ---
 <DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/jupyter-notebook-viewer/og.png`}>
-  <JupyterNav />
-  <h1>When something looks wrong</h1>
+  <h1>Troubleshooting</h1>
   <p class="lede">Most messages mean the .ipynb is missing from this page, the file is over 2 MB, or the chart was saved as HTML instead of PNG. The page does not run the notebook.</p>
   <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
 
   <h2>Choose a notebook</h2>
   <p>The macro was inserted without a file. Edit the page, open the macro, and select the <code>.ipynb</code> attached to this page.</p>
 
-  <h2>That file is not on this page</h2>
+  <h2>Missing file</h2>
   <p>The saved filename is not in the current attachment list. Attach the file to this page, or edit the macro and choose a file that is attached.</p>
 
-  <h2>This notebook is too large</h2>
+  <h2>File size</h2>
   <p>The file is over 2 MB. The app stops before reading it. In Jupyter, clear oversized outputs, save, and attach the smaller file.</p>
 
-  <h2>This file is not a notebook</h2>
+  <h2>File format</h2>
   <p>The file is not valid JSON, or it is not nbformat 4. Save it again from Jupyter and attach the new file.</p>
 
-  <h2>The notebook could not be downloaded</h2>
+  <h2>Download</h2>
   <p>The attachment could not be read with your permission to the page. Confirm you can download the file from the page attachments, then reload.</p>
 
-  <h2>A subscription is required</h2>
+  <h2>Subscription</h2>
   <p>The app is paid. An administrator checks Jupyter Notebook Viewer for Confluence under <strong>Apps</strong>, then <strong>Manage apps</strong>. A production install uses the Marketplace subscription.</p>
 
-  <h2>The list of files is empty</h2>
+  <h2>Empty list</h2>
   <p>Attach the <code>.ipynb</code> to this page, then close the macro dialog and open it again. You can also type the filename. The name has to match the attachment.</p>
 
-  <h2>A chart from the notebook is missing</h2>
+  <h2>Missing chart</h2>
   <p>The chart was probably saved as HTML, SVG, or a widget. Re-run the cell so Jupyter also stores a PNG or JPEG, save the notebook, and attach that file. See <a href="/jupyter-notebook-viewer/limits/">what is left out</a>.</p>
 
-  <h2>The page looks different from Jupyter</h2>
+  <h2>Different view</h2>
   <p>That is expected. The app shows a reading view of the saved file. It does not start a kernel, and it does not display HTML.</p>
 
-  <h2>Still stuck</h2>
+  <h2>Support</h2>
   <p>Email <a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a> with the page URL, the attachment filename, and a screenshot of the message.</p>
 </DocLayout>

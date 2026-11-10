@@ -1,6 +1,5 @@
 ---
 import DocLayout from '../../layouts/DocLayout.astro';
-import JupyterNav from '../../components/JupyterNav.astro';
 import { SITE, UPDATED, faqs, faqSchema, appSchema } from '../../data/jupyter-notebook-viewer.js';
 
 const title = 'Jupyter Notebook Viewer for Confluence';
@@ -8,7 +7,6 @@ const description = 'Read an attached Jupyter notebook on the Confluence page: t
 const canonical = `${SITE}/jupyter-notebook-viewer/`;
 ---
 <DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/jupyter-notebook-viewer/og.png`} jsonLd={[appSchema(), faqSchema()]}>
-  <JupyterNav />
   <p class="kicker">Forge app for Confluence Cloud · Upgrade Solutions</p>
   <h1>Jupyter Notebook Viewer for Confluence</h1>
   <p class="lede">Jupyter Notebook Viewer for Confluence renders one .ipynb file already attached to the page. Readers see the markdown, the code, text output, and plots saved as PNG or JPEG. The notebook is not loaded from another website.</p>
@@ -19,7 +17,7 @@ const canonical = `${SITE}/jupyter-notebook-viewer/`;
     <figcaption>The reading pane keeps a long notebook on the page: headings, the table, and the code.</figcaption>
   </figure>
 
-  <h2>What it is for</h2>
+  <h2>Purpose</h2>
   <ul>
     <li>A forecast or analysis write-up, with the notebook that produced it on the same page.</li>
     <li>A result you can hand to someone who should not have to read the code.</li>
@@ -28,7 +26,7 @@ const canonical = `${SITE}/jupyter-notebook-viewer/`;
   </ul>
   <p>Start with <a href="/jupyter-notebook-viewer/add/">adding a notebook</a>. <a href="/jupyter-notebook-viewer/reading/">Reading a notebook</a> covers Results, Code, and In/Out.</p>
 
-  <h2>Three ways to read the same file</h2>
+  <h2>Reading modes</h2>
   <figure>
     <img src="/jupyter-notebook-viewer/modes.gif" alt="The same notebook switching among Notebook, Results, and Code." width="1000" height="673" />
     <figcaption>Notebook, Results, and Code are the same attachment. The choice stays in that browser.</figcaption>
@@ -39,7 +37,7 @@ const canonical = `${SITE}/jupyter-notebook-viewer/`;
     <li><strong>Code</strong> hides outputs, so a review stays on the cells.</li>
   </ul>
 
-  <h2>Saved plots</h2>
+  <h2>Plots</h2>
   <figure>
     <img src="/jupyter-notebook-viewer/plots.png" alt="A PNG line chart stored in the notebook, shown in the Confluence reading pane." width="1840" height="900" />
     <figcaption>PNG and JPEG outputs stored in the notebook are shown. The page does not run the cell again.</figcaption>
