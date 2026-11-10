@@ -1,6 +1,5 @@
 ---
 import DocLayout from '../../../layouts/DocLayout.astro';
-import CqlNav from '../../../components/CqlNav.astro';
 import { SITE, UPDATED } from '../../../data/cql-search.js';
 
 const title = 'Export CQL search results to CSV';
@@ -8,8 +7,7 @@ const description = 'Download the current page of CQL Search results as CSV, inc
 const canonical = `${SITE}/cql-search/export/`;
 ---
 <DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/cql-search/og.png`}>
-  <CqlNav />
-  <h1>Export the rows you are looking at</h1>
+  <h1>Export CSV</h1>
   <p class="lede">Download CSV writes <code>cql-search.csv</code> from the rows on screen. It does not walk the rest of the result set.</p>
   <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
 
@@ -21,11 +19,11 @@ const canonical = `${SITE}/cql-search/export/`;
   </ol>
   <p>The button is there whenever a search has finished without an error, including a search that matched nothing. Next and Previous show up only when Confluence returned another page.</p>
 
-  <h2>What is in the file</h2>
+  <h2>File contents</h2>
   <p>The columns are the ones selected for that search, in this order when chosen: Title, Type, Space, Modified, Creator. A <code>url</code> column is always added. The url is the Confluence path for that row, so it opens for someone who already has access.</p>
   <p>Cells that contain a comma, a quote, or a new line are wrapped in quotes, and quotes inside a cell are doubled. That is ordinary CSV.</p>
 
-  <h2>Get the next set of rows</h2>
+  <h2>Next page</h2>
   <p>Choose <strong>Next</strong>, wait for the table, and download again. Each file replaces the previous download in your browser’s download folder if the name matches, so rename the file if you are keeping more than one page.</p>
   <p>Page size is 10, 25, or 50, set in the macro or on the Apps page before you search. A larger page size means more rows in one CSV, still capped at 50.</p>
 </DocLayout>

@@ -1,7 +1,15 @@
+---
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const items = [
+  { href: '/cql-search/', label: 'Overview' },
+  { href: '/cql-search/embed/', label: 'Embed a search' },
+  { href: '/cql-search/queries/', label: 'Write a query' },
+  { href: '/cql-search/export/', label: 'Export CSV' },
+  { href: '/cql-search/use-cases/', label: 'Use cases' },
+];
+---
 <nav class="sub" aria-label="CQL Search guides">
-  <a href="/cql-search/">Overview</a>
-  <a href="/cql-search/embed/">Embed a search</a>
-  <a href="/cql-search/queries/">Write a query</a>
-  <a href="/cql-search/export/">Export CSV</a>
-  <a href="/cql-search/use-cases/">Use cases</a>
+  {items.map((item) => (
+    <a href={item.href} aria-current={path === item.href.replace(/\/$/, '') ? 'page' : undefined}>{item.label}</a>
+  ))}
 </nav>

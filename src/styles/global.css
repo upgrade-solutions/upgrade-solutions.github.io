@@ -5,6 +5,12 @@ body, html {
   overflow-x: hidden;
 }
 
+#home,
+#solutions,
+#contact {
+  scroll-margin-top: 72px;
+}
+
 .ant-anchor-wrapper-horizontal::before { border-bottom: none !important; }
 
 @media (max-width: 500px) {

@@ -1,0 +1,38 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+
+const title = 'FlagShip troubleshooting';
+const description = 'Fix a FlagShip connection error, an empty flag list, a missing flag, or a toggle that did not change the provider.';
+---
+<DocLayout title={title} description={description}>
+  <h1>Troubleshooting</h1>
+  <p class="lede">Most problems are the provider connection, a flag that no longer exists, or a toggle that was moved without choosing Save.</p>
+  <p>Updated <time datetime="2026-11-10">10 November 2026</time>.</p>
+
+  <h2>Connect a provider</h2>
+  <p>The issue panel says to connect FlagShip in app settings. A Jira admin opens <strong>FlagShip Config</strong>, checks the provider, the key, and the project or workspace id, and saves again. The steps are on <a href="/flagship/connect/">Connect</a>.</p>
+
+  <h2>Invalid token or key</h2>
+  <p><strong>Invalid Access Token</strong> is LaunchDarkly. <strong>Invalid API Key</strong> is Split. Create a new key with permission to read flags and turn them on or off, paste it, and save.</p>
+
+  <h2>Invalid project or workspace</h2>
+  <p><strong>Invalid Project ID</strong> means the LaunchDarkly project key was not found. <strong>Invalid Workspace ID</strong> means the Split workspace was not found. Use the key or id from the provider, then save again.</p>
+
+  <h2>Unknown error</h2>
+  <p><strong>Unknown Error</strong> means the provider returned something other than success, a rejected key, or a missing project or workspace. Try the save again. If it stays, email support with the provider name and the time of the attempt.</p>
+
+  <h2>Empty flag list</h2>
+  <p><strong>Link a flag</strong> loaded no flags. Confirm the project or workspace has flags, and that the key is allowed to list them. Save the connection again, then reopen the issue.</p>
+
+  <h2>Missing flag</h2>
+  <p>If the linked flag was deleted or renamed at the provider, the panel returns to <strong>No feature flag linked.</strong> Link the flag again.</p>
+
+  <h2>N/A</h2>
+  <p>That environment has no setup for this flag at the provider. Create the flag in that environment in LaunchDarkly or Split, then reload the issue. FlagShip cannot turn on a flag the provider does not have there.</p>
+
+  <h2>Toggle did not stick</h2>
+  <p>Moving the toggle only enables <strong>Save</strong>. Choose Save on that row. Reload the issue and check the same environment in LaunchDarkly or Split.</p>
+
+  <h2>Support</h2>
+  <p>Email <a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a> with the Jira issue key, the provider, and a screenshot of the message.</p>
+</DocLayout>

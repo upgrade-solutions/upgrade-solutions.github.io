@@ -1,0 +1,51 @@
+---
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <p>&copy; {year} Upgrade Solutions LLC</p>
+  <nav aria-label="Legal">
+    <a href="https://www.privacypolicies.com/live/728108d2-3caf-465b-9fb4-3746765b8434" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+    <a href="/terms/" aria-current={path.startsWith('/terms') ? 'page' : undefined}>Terms of Use</a>
+  </nav>
+</footer>
+
+<style>
+  .site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 24px;
+    flex-wrap: wrap;
+    padding: 18px 24px;
+    background: #131313;
+    border-top: 3px solid #286b74;
+    color: #ffffff;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 0.9rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  nav {
+    display: flex;
+    gap: 18px;
+  }
+
+  a {
+    color: lightgrey;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a[aria-current="page"] {
+    color: #ffffff;
+  }
+
+  a:focus-visible {
+    outline: 2px solid #3d9aa3;
+    outline-offset: 3px;
+  }
+</style>

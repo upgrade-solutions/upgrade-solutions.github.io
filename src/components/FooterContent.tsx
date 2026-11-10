@@ -10,8 +10,8 @@ const FooterContent: React.FC = () => (
       </Col>
       <Col span={12} style={{ textAlign: 'right', fontSize: '0.9em' }}>
         <Space size="middle">
-          <a href="https://www.privacypolicies.com/live/728108d2-3caf-465b-9fb4-3746765b8434" target="_blank">Privacy Policy</a>
-          <a href="/terms/">Terms of Use</a>
+          <a href="https://www.privacypolicies.com/live/728108d2-3caf-465b-9fb4-3746765b8434" target="_blank" rel="noopener noreferrer" style={{ color: 'lightgrey' }}>Privacy Policy</a>
+          <a href="/terms/" style={{ color: 'lightgrey' }}>Terms of Use</a>
         </Space>
       </Col>
     </Row>

@@ -1,0 +1,39 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+
+const title = 'Connect FlagShip to LaunchDarkly or Split';
+const description = 'In Jira administration, open FlagShip Config and save a LaunchDarkly access token and project key, or a Split admin API key and workspace ID.';
+---
+<DocLayout title={title} description={description}>
+  <h1>Connect</h1>
+  <p class="lede">A Jira admin connects FlagShip once for the site. Until that connection succeeds, the issue panel asks you to connect a provider.</p>
+  <p>Updated <time datetime="2026-11-10">10 November 2026</time>.</p>
+
+  <h2>Open the admin page</h2>
+  <ol>
+    <li>Open Jira administration.</li>
+    <li>Open <strong>FlagShip Config</strong>.</li>
+  </ol>
+
+  <h2>LaunchDarkly</h2>
+  <ol>
+    <li>Set <strong>Provider</strong> to Launch Darkly.</li>
+    <li>Paste an <a href="https://docs.launchdarkly.com/home/account/api/?q=api#create-api-access-tokens">API access token</a> into <strong>API Access Token / Key</strong>. The token has to be allowed to read the project, list flags, and turn a flag on or off.</li>
+    <li>Enter the <a href="https://docs.launchdarkly.com/home/account/project#create-projects">project key</a> in <strong>Workspace / Project ID</strong>.</li>
+    <li>Choose <strong>Save</strong>.</li>
+  </ol>
+  <p><strong>Successful Connection!</strong> means the token could read that project. <strong>Invalid Access Token</strong> means the token was rejected. <strong>Invalid Project ID</strong> means the project key was not found.</p>
+
+  <h2>Split</h2>
+  <ol>
+    <li>Set <strong>Provider</strong> to Split.</li>
+    <li>Paste an <a href="https://help.split.io/hc/en-us/articles/360019916211-API-keys#adding-admin-api-keys">admin API key</a> into <strong>API Access Token / Key</strong>.</li>
+    <li>Enter the <a href="https://help.split.io/hc/en-us/articles/360023534451-Workspaces#creating-workspaces">workspace ID</a> in <strong>Workspace / Project ID</strong>.</li>
+    <li>Choose <strong>Save</strong>.</li>
+  </ol>
+  <p><strong>Successful Connection!</strong> means the key could read that workspace. <strong>Invalid API Key</strong> means the key was rejected. <strong>Invalid Workspace ID</strong> means the workspace was not found.</p>
+
+  <h2>After a successful save</h2>
+  <p>FlagShip loads the provider’s environments and keeps them for the issue panel. The key is stored as a Forge secret. The admin page shows the first 10 characters and masks the rest.</p>
+  <p>One site uses one provider. Saving LaunchDarkly replaces a Split connection, and the reverse is also true. Issue links belong to the provider that was connected when they were saved.</p>
+</DocLayout>

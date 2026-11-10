@@ -1,0 +1,32 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+
+const title = 'What FlagShip stores';
+const description = 'FlagShip stores the provider connection, the environment list, and the flag linked to each Jira issue. The API key is a Forge secret. Issue fields are not copied.';
+---
+<DocLayout title={title} description={description}>
+  <h1>Stored data</h1>
+  <p class="lede">FlagShip keeps the connection and the flag link in Forge storage on Atlassian. It does not copy Jira issue fields. Turning a flag on or off sends that change to LaunchDarkly or Split.</p>
+  <p>Updated <time datetime="2026-11-10">10 November 2026</time>.</p>
+
+  <h2>On Atlassian</h2>
+  <table>
+    <thead>
+      <tr><th>Item</th><th>Where it lives</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Provider, LaunchDarkly or Split</td><td>Forge storage</td></tr>
+      <tr><td>Project key or workspace ID</td><td>Forge storage</td></tr>
+      <tr><td>Environment names used on the issue panel</td><td>Forge storage</td></tr>
+      <tr><td>Flag id and name linked to an issue</td><td>Forge storage, one link per issue</td></tr>
+      <tr><td>API access token or admin API key</td><td>Forge secret. The admin page shows the first 10 characters and masks the rest.</td></tr>
+    </tbody>
+  </table>
+  <p>Jira summary, description, and comments are not stored.</p>
+
+  <h2>Sent to the provider</h2>
+  <p>Connect, the flag list, and each saved toggle call LaunchDarkly at <code>app.launchdarkly.com</code> or Split at <code>api.split.io</code>. The request uses the saved key. A saved toggle sends the environment and whether the flag should be on or off. FlagShip does not send the Jira issue’s text.</p>
+
+  <h2>What a toggle changes</h2>
+  <p>Save turns the flag on or off in that environment. It does not edit a percentage rollout, individual user targets, or other targeting rules. Those stay in LaunchDarkly or Split.</p>
+</DocLayout>

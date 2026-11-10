@@ -1,17 +1,39 @@
 ---
 import DocLayout from '../../layouts/DocLayout.astro';
+
+const title = 'FlagShip Feature Flags';
+const description = 'Link a LaunchDarkly or Split feature flag to a Jira issue and turn it on or off in each environment from that issue.';
 ---
-<DocLayout
-  title="FlagShip Feature Flags"
-  description="Toggle LaunchDarkly and Split feature flags from a Jira issue."
->
-  <h1>FlagShip Feature Flags</h1>
-  <p>FlagShip links a Jira issue to a LaunchDarkly or Split feature flag and lets people who can see the issue turn that flag on or off in each environment.</p>
-  <h2>Set up</h2>
-  <p>Open <strong>FlagShip Config</strong> in Jira administration. Connect LaunchDarkly with an access token and project, or Split with an API key and workspace.</p>
-  <h2>Use it on an issue</h2>
-  <p>Open a Jira issue and choose the flag to link. The issue panel shows the flag in each environment. Turn a flag on or off there.</p>
+<DocLayout title={title} description={description}>
+  <p class="kicker">Forge app for Jira Cloud · Upgrade Solutions</p>
+  <h1>FlagShip</h1>
+  <p class="lede">FlagShip links one LaunchDarkly or Split feature flag to a Jira issue. From that issue, turn the flag on or off in each environment and save. The change is sent to the provider.</p>
+  <p>A Jira admin connects the site to one provider. The issue panel then lists that provider’s flags and environments. Updated <time datetime="2026-11-10">10 November 2026</time>.</p>
+
+  <h2>Purpose</h2>
+  <ul>
+    <li>Keep the flag next to the issue that is shipping it.</li>
+    <li>See each environment on the issue, and save an on or off change there.</li>
+    <li>Leave targeting rules in LaunchDarkly or Split. FlagShip turns the flag on or off. It does not edit those rules.</li>
+  </ul>
+  <p>Start with <a href="/flagship/connect/">Connect</a>. <a href="/flagship/issue/">On an issue</a> covers linking a flag and saving a change.</p>
+
+  <h2>Providers</h2>
+  <p>The site connects to one provider at a time. Saving the other provider replaces the connection.</p>
+  <table>
+    <thead>
+      <tr><th>Provider</th><th>What an admin enters</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LaunchDarkly</td><td>API access token and project key</td></tr>
+      <tr><td>Split</td><td>Admin API key and workspace ID</td></tr>
+    </tbody>
+  </table>
+
+  <h2>On an issue</h2>
+  <p>The panel is named <strong>FlagShip</strong>. It shows one linked flag, a row for each environment, and <strong>Save</strong> on the row you change. <strong>Clear flag</strong> removes the link from the issue. It does not delete the flag at the provider.</p>
+  <p>Anyone who can see the issue can use the panel. The app does not add a separate approval step.</p>
+
   <h2>Support</h2>
-  <p>Email <a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a>.</p>
-  <p>Upgrade Solutions LLC does not store Jira issue data. Provider credentials are used to talk to LaunchDarkly or Split on your behalf.</p>
+  <p>Email <a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a>. Include the Jira issue key, the provider, and the message on the panel or the admin page.</p>
 </DocLayout>

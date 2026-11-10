@@ -1,6 +1,5 @@
 ---
 import DocLayout from '../../../layouts/DocLayout.astro';
-import JupyterNav from '../../../components/JupyterNav.astro';
 import { SITE, UPDATED } from '../../../data/jupyter-notebook-viewer.js';
 
 const title = 'What Jupyter Notebook Viewer leaves out';
@@ -8,8 +7,7 @@ const description = 'Jupyter Notebook Viewer for Confluence shows markdown, code
 const canonical = `${SITE}/jupyter-notebook-viewer/limits/`;
 ---
 <DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/jupyter-notebook-viewer/og.png`}>
-  <JupyterNav />
-  <h1>What is left out</h1>
+  <h1>Limits</h1>
   <p class="lede">Jupyter Notebook Viewer for Confluence is a reader for a file that is already on the page. A few notebook features are omitted on purpose.</p>
   <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
 
