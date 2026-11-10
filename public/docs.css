@@ -7,7 +7,11 @@ body {
 }
 
 a {
-  color: #8fd0d8;
+  color: #9fe0e6;
+}
+
+a:hover {
+  color: #ffffff;
 }
 
 header, footer {
@@ -16,7 +20,15 @@ header, footer {
   gap: 16px;
   align-items: center;
   padding: 20px 24px;
-  background: #0e0e0e;
+  background: #102628;
+}
+
+header {
+  border-bottom: 4px solid #286b74;
+}
+
+footer {
+  border-top: 4px solid #286b74;
 }
 
 nav {
@@ -39,9 +51,15 @@ h1 {
   margin-top: 0.2em;
 }
 
+h2 {
+  margin-top: 1.6em;
+  padding-bottom: 0.25em;
+  border-bottom: 2px solid #286b74;
+}
+
 .kicker {
   margin-bottom: 0;
-  color: #8fd0d8;
+  color: #9fe0e6;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -49,13 +67,31 @@ h1 {
 
 .lede {
   font-size: 1.2rem;
+  margin-top: 0.4em;
+  padding: 14px 16px;
+  background: #1a3a3e;
+  border-left: 4px solid #3d9aa3;
+  border-radius: 0 8px 8px 0;
 }
 
 nav.sub {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 16px;
+  gap: 8px;
   margin-bottom: 8px;
+}
+
+nav.sub a {
+  padding: 4px 12px;
+  border: 1px solid #3d9aa3;
+  border-radius: 999px;
+  text-decoration: none;
+  background: #163236;
+}
+
+nav.sub a:hover {
+  background: #286b74;
+  color: #ffffff;
 }
 
 table {
@@ -67,15 +103,22 @@ table {
 th, td {
   text-align: left;
   padding: 8px 10px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #2a4a4e;
   vertical-align: top;
+}
+
+thead th {
+  background: #286b74;
+  color: #ffffff;
+  border-bottom: none;
 }
 
 pre {
   overflow-x: auto;
   padding: 12px 14px;
-  background: #0e0e0e;
-  border-radius: 8px;
+  background: #102628;
+  border-left: 4px solid #3d9aa3;
+  border-radius: 0 8px 8px 0;
 }
 
 img {
