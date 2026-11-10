@@ -1,0 +1,61 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+import CqlNav from '../../../components/CqlNav.astro';
+import { SITE, UPDATED } from '../../../data/cql-search.js';
+
+const title = 'Embed a CQL search on a Confluence page';
+const description = 'Insert the CQL Search macro, save a query, and show a live result table on a Confluence page. The query runs as each viewer.';
+const canonical = `${SITE}/cql-search/embed/`;
+const howTo = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Embed a CQL search on a Confluence page',
+  description,
+  totalTime: 'PT5M',
+  step: [
+    { '@type': 'HowToStep', name: 'Edit the page', text: 'Open the Confluence page and choose Edit.' },
+    { '@type': 'HowToStep', name: 'Insert CQL Search', text: 'Type /CQL Search and insert the CQL Search macro.' },
+    { '@type': 'HowToStep', name: 'Save the query', text: 'Enter a CQL query, choose columns, choose a page size of 10, 25, or 50, and save the macro.' },
+    { '@type': 'HowToStep', name: 'Publish', text: 'Publish the page. Each viewer sees a table of matches they are allowed to open.' },
+  ],
+};
+---
+<DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/cql-search/og.png`} jsonLd={howTo}>
+  <CqlNav />
+  <h1>Embed a CQL search on a page</h1>
+  <p class="lede">The CQL Search macro keeps one query on the page and renders a table for whoever opens it. The query runs again for each viewer.</p>
+  <p>Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
+
+  <h2>Insert the macro</h2>
+  <ol>
+    <li>Edit the page.</li>
+    <li>Type <code>/CQL Search</code> and insert the macro.</li>
+    <li>In the configuration dialog, enter the query in <strong>CQL</strong>.</li>
+    <li>Choose columns. The choices are Title, Type, Space, Modified, and Creator. If you clear every column, the table uses Title, Space, and Modified.</li>
+    <li>Choose a page size of 10, 25, or 50. The default is 25.</li>
+    <li>Choose <strong>Save</strong>, then publish the page.</li>
+  </ol>
+  <p>Until a query is saved, the macro says “Add a CQL query from the macro configuration.”</p>
+
+  <h2>Tokens that use this page</h2>
+  <p>These tokens work only in the macro, because only the macro knows which page it sits on. They are replaced outside of quotes, and the value is inserted as a CQL string.</p>
+  <table>
+    <thead>
+      <tr><th>Token</th><th>Becomes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>currentSpace()</code> and <code>spaceKey()</code></td><td>The key of the space that contains the page</td></tr>
+      <tr><td><code>currentContent()</code> and <code>pageId()</code></td><td>The id of the page that contains the macro</td></tr>
+    </tbody>
+  </table>
+  <p>A query that uses one of those tokens on the Apps page fails with “Missing context,” because that page has no space or content id to substitute. <code>currentUser()</code> is not rewritten by the app. Confluence resolves it.</p>
+
+  <h2>A query worth saving</h2>
+  <p>Pages in this space, newest change first:</p>
+  <pre><code>space = currentSpace() AND type = page ORDER BY lastModified DESC</code></pre>
+  <p>More examples are in <a href="/cql-search/queries/">Write a query</a> and <a href="/cql-search/use-cases/">Use cases</a>.</p>
+
+  <h2>What readers see</h2>
+  <p>The table loads when the page loads. Title is a link. Next and Previous appear when Confluence has another page of matches. Download CSV saves the rows currently shown. A viewer with no matches sees “Nothing matched.” A query Confluence rejects shows “Search failed” and the message from the search.</p>
+  <p>An inactive license shows “Upgrade required” and does not run the search.</p>
+</DocLayout>

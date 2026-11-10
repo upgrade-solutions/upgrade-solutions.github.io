@@ -1,21 +1,75 @@
 ---
 import DocLayout from '../../layouts/DocLayout.astro';
+import CqlNav from '../../components/CqlNav.astro';
+import { SITE, UPDATED, faqs, faqSchema, appSchema } from '../../data/cql-search.js';
+
+const title = 'CQL Search for Confluence';
+const description = 'Embed a live Confluence Query Language result table on any page, or run the same search from Apps. The search runs as the viewer and stays inside Atlassian.';
+const canonical = `${SITE}/cql-search/`;
 ---
-<DocLayout
-  title="CQL Search for Confluence"
-  description="Run a CQL query and show the results on a Confluence page or a global page."
->
+<DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/cql-search/og.png`} jsonLd={[appSchema(), faqSchema()]}>
+  <CqlNav />
+  <p class="kicker">Forge app for Confluence Cloud · Upgrade Solutions</p>
   <h1>CQL Search for Confluence</h1>
-  <p>CQL Search runs one Confluence Query Language search as the person viewing the page and shows the matches in a table. It can also download the rows on the current page as CSV.</p>
-  <h2>Search from the global page</h2>
-  <p>In Confluence, open Apps and choose <strong>CQL Search</strong>. Enter a query and choose Search. <code>spaceKey()</code>, <code>pageId()</code>, <code>currentSpace()</code>, and <code>currentContent()</code> are not available on this page. <code>currentUser()</code> is left for Confluence to resolve.</p>
-  <h2>Embed a search on a page</h2>
-  <p>Edit a page, type <code>/CQL Search</code>, and insert the macro. Save a query, the columns to show, and a page size of 10, 25, or 50. On a page, <code>currentSpace()</code> and <code>spaceKey()</code> use that page's space. <code>currentContent()</code> and <code>pageId()</code> use that page.</p>
-  <p>Example:</p>
-  <p><code>space = currentSpace() and type = page order by title asc</code></p>
-  <h2>Results</h2>
-  <p>Use Next and Previous when a query has more matches than the page size. Download CSV saves only the rows currently shown. People see only the content Confluence already allows them to see.</p>
+  <p class="lede">CQL Search for Confluence runs one Confluence Query Language query as the person looking at the page, then shows the matches in a table. Put that table where the team already reads, or open the same search from Apps when you only need it once.</p>
+  <p>The search runs inside Atlassian. The app stores nothing of its own, and it does not send page content to an outside server. Updated <time datetime={UPDATED}>10 November 2026</time>.</p>
+
+  <h2>What it is for</h2>
+  <ul>
+    <li>A space index that stays current without someone rebuilding the list.</li>
+    <li>Pages and attachments that have gone quiet.</li>
+    <li>A personal list, such as pages you contributed to, embedded for the whole team.</li>
+    <li>A one-off query from Apps when you do not want to edit a page.</li>
+  </ul>
+  <p>Read the <a href="/cql-search/use-cases/">use cases</a> for the query behind each of those.</p>
+
+  <h2>Two ways to search</h2>
+  <ol>
+    <li><a href="/cql-search/embed/">Embed a search</a> with the CQL Search macro. The query, columns, and page size are saved on the page.</li>
+    <li>Open <strong>Apps</strong> and choose <strong>CQL Search</strong> for a search you do not need to keep.</li>
+  </ol>
+  <p>On a page, <code>currentSpace()</code> and <code>spaceKey()</code> use that page’s space. <code>currentContent()</code> and <code>pageId()</code> use that page. Those four tokens are not available on the Apps page. <code>currentUser()</code> is left for Confluence in both places. The <a href="/cql-search/queries/">query guide</a> has working examples.</p>
+
+  <h2>What you get in the table</h2>
+  <p>Choose any of Title, Type, Space, Modified, and Creator. Title links to the content. Page size is 10, 25, or 50. Next and Previous move through a longer result set. <a href="/cql-search/export/">Download CSV</a> saves the rows on the current page, including a url column.</p>
+
+  <h2>What this version does not do</h2>
+  <ul>
+    <li>It does not import another app’s macro. Paste the query into CQL Search.</li>
+    <li>It does not save searches on the Apps page, build charts, or move pages in bulk.</li>
+    <li>It does not export every match in one file. Download the page you are looking at, then go to the next page.</li>
+  </ul>
+
+  <h2>Price</h2>
+  <p>Cloud pricing is monthly, and Atlassian bills it annually at ten times the monthly price. Multi-instance pricing uses the same rates.</p>
+  <table>
+    <thead>
+      <tr><th>Users</th><th>Price</th><th>About a year</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Up to 10</td><td>$1.00 flat / month</td><td>$10</td></tr>
+      <tr><td>11–100</td><td>$0.10 / user / month</td><td>$100 at 100 users</td></tr>
+      <tr><td>101–250</td><td>$0.08 / user / month</td><td>$200 at 250 users</td></tr>
+      <tr><td>251–1,000</td><td>$0.06 / user / month</td><td>$600 at 1,000 users</td></tr>
+      <tr><td>1,001–2,500</td><td>$0.05 / user / month</td><td>$1,250 at 2,500 users</td></tr>
+      <tr><td>2,501–5,000</td><td>$0.04 / user / month</td><td>$2,000 at 5,000 users</td></tr>
+      <tr><td>5,001–7,500</td><td>$0.03 / user / month</td><td>$2,250 at 7,500 users</td></tr>
+      <tr><td>7,501 and up</td><td>$0.02 / user / month</td><td>$2,400 at 10,000 users</td></tr>
+    </tbody>
+  </table>
+
+  <h2>How this sits next to other CQL apps</h2>
+  <p>StreamlineSoft’s CQL Search is still a public paid listing, with 971 installs and a 5.0 rating from 5 reviews. Its latest release is 1.1.3-AC on 11 July 2024, and that release is a Connect app. Connect apps have not been able to publish updates since March 2026, and Atlassian ends Connect support on 31 January 2027. CQL Search for Confluence is a separate Forge app. It covers the same job — a query, a table, and a macro — and it can keep shipping after that date. It does not copy an older macro onto the page for you.</p>
+  <p>Richer Forge apps already exist for teams that also want saved searches, charts, or bulk page moves. This one stays with the search table.</p>
+
+  <h2>Questions</h2>
+  {faqs.map((item) => (
+    <section>
+      <h3>{item.question}</h3>
+      <p>{item.answer}</p>
+    </section>
+  ))}
+
   <h2>Support</h2>
-  <p>Email <a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a>.</p>
-  <p>The app stores nothing of its own. The query, columns, and page size stay in the macro configuration on the page.</p>
+  <p>Email <a href="mailto:tim@upgradesolutions.io">tim@upgradesolutions.io</a>. Include the query, the page URL, and what you expected to see.</p>
 </DocLayout>

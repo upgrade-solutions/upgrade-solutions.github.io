@@ -1,0 +1,51 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+import CqlNav from '../../../components/CqlNav.astro';
+import { SITE, UPDATED } from '../../../data/cql-search.js';
+
+const title = 'Write a CQL query for CQL Search';
+const description = 'CQL examples for CQL Search for Confluence: stale pages, this space, your contributions, child pages, and attachments. Includes which tokens work in the macro.';
+const canonical = `${SITE}/cql-search/queries/`;
+---
+<DocLayout title={title} description={description} canonical={canonical} image={`${SITE}/cql-search/og.png`}>
+  <CqlNav />
+  <h1>Write a query</h1>
+  <p class="lede">CQL Search sends one query to Confluence search. The language is Confluence Query Language, the same syntax documented by Atlassian for advanced search.</p>
+  <p>Updated <time datetime={UPDATED}>10 November 2026</time>. Atlassian’s reference: <a href="https://developer.atlassian.com/cloud/confluence/advanced-searching-using-cql/">Advanced searching using CQL</a>.</p>
+
+  <h2>Start with a type</h2>
+  <p>Most useful queries say what they are looking at, then narrow it.</p>
+  <pre><code>type = page AND title ~ "runbook"</code></pre>
+  <p><code>type</code> can be <code>page</code>, <code>blogpost</code>, <code>attachment</code>, <code>comment</code>, or another content type Confluence indexes. <code>~</code> is a text match. <code>=</code> is exact.</p>
+
+  <h2>Examples</h2>
+  <h3>Pages in this space, by title</h3>
+  <pre><code>space = currentSpace() AND type = page ORDER BY title ASC</code></pre>
+  <p>Use this in the macro. <code>currentSpace()</code> becomes the space key of the page you are editing.</p>
+
+  <h3>Pages with no update for 180 days</h3>
+  <pre><code>type = page AND lastModified &lt; now("-180d") ORDER BY lastModified ASC</code></pre>
+  <p><code>now("-180d")</code> stays relative, so the list is still right next month. Add <code>AND space = currentSpace()</code> in a macro when the list should stay in one space.</p>
+
+  <h3>Pages you contributed to</h3>
+  <pre><code>type = page AND contributor = currentUser() ORDER BY lastModified DESC</code></pre>
+  <p>The app does not replace <code>currentUser()</code>. Confluence does, as the person who opened the page. On a shared page, each reader’s table is their own.</p>
+
+  <h3>Child pages of this page</h3>
+  <pre><code>parent = currentContent() AND type = page ORDER BY title ASC</code></pre>
+  <p><code>ancestor = currentContent()</code> includes grandchildren as well. Both belong in the macro.</p>
+
+  <h3>Attachments with a label</h3>
+  <pre><code>type = attachment AND label = "handbook" ORDER BY lastModified DESC</code></pre>
+
+  <h2>Rules the app adds</h2>
+  <ul>
+    <li>One query per search. There is no second filter box.</li>
+    <li><code>spaceKey()</code>, <code>currentSpace()</code>, <code>pageId()</code>, and <code>currentContent()</code> are replaced only outside quotes. Inside <code>"double quotes"</code> or <code>'single quotes'</code> they stay as text.</li>
+    <li>If the macro cannot fill a token because the page context is missing, the search does not run. The message is <code>Missing context for currentSpace()</code>, or whichever token was empty.</li>
+    <li>The Apps page has no page context. Write space keys and content ids out in full there, or use functions Confluence already understands, such as <code>currentUser()</code>.</li>
+  </ul>
+
+  <h2>When a query fails</h2>
+  <p>The table shows “Search failed” and the message Confluence returned. Check the field name, the quotes, and that <code>ORDER BY</code> uses a field Confluence can sort. A query can also return “Nothing matched,” which means the syntax was fine and the viewer can see zero rows.</p>
+</DocLayout>
